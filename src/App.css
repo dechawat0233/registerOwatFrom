@@ -1,0 +1,502 @@
+/* Navbar.css */
+.navbar {
+  width: auto;
+  background-color: #EF4923;
+  padding: 2rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-right: 1rem;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Sidebar.css */
+.sidebar {
+  background-color: #f4f4f4;
+  width: 200px;
+  height: 1100PX;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+}
+/* Contents.css */
+.h1 {
+  font-family: 'Inter';
+text-shadow: 2px 2px 4px #dcd9d9;
+margin-left: 50px;
+color: #EF4923;
+}
+
+.container-wrapper {
+  flex-wrap: wrap; /* เพิ่ม flex-wrap เพื่อให้ขอบเขตของ container ไม่เกินขอบจอ */
+  flex-direction: column
+
+
+}
+
+.container-one,
+.container-two,
+.container-three,
+.container-four,
+.container-five,
+.container-six {
+  margin: 20px; /* เพิ่ม margin ระหว่าง container */
+}
+
+.container-one,
+.container-two,
+.container-three,
+.container-four,
+.container-five,
+.container-six {
+  box-shadow: 0 0 10px rgba(154, 146, 146, 0.938);
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.textcontainer-one,
+.textcontainer-two,
+.textcontainer-three,
+.textcontainer-four,
+.textcontainer-five,
+.textcontainer-six,
+.textcontainer-seven,
+.textcontainer-eight,
+.textcontainer-nine,
+.textcontainer-ten {
+  margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างหัวข้อ */
+}
+
+.custom-checkbox {
+  margin-right: 10px; /* ปรับระยะห่างของ checkbox */
+  vertical-align: middle;
+}
+.input-group1{
+  margin-bottom: 10px;
+}
+.input-group1 input {
+  border: #f2f2f2;
+  border-radius: 5px;
+  height: 30px;
+  width:  1100px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
+  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
+}
+.input-group{
+  margin-bottom: 10px; /* เพิ่มระยะห่างของ input group */
+}
+.input-group h4 {
+  display: inline-block;
+  margin-right: 10px; /* ปรับตำแหน่งข้อความให้เหมาะสม */
+}
+.input-group input {
+  border: #f2f2f2;
+  border-radius: 5px;
+  height: 30px;
+  width:  200px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
+  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
+}
+.input-group2 {
+  margin-bottom: 10px;
+}
+.input-group2 input {
+  border: #f2f2f2;
+  border-radius: 5px;
+  height: 30px;
+  width:  1100px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
+  margin-right: 30px; 
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* เพิ่มระยะห่างของ button container */
+}
+
+.add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+tth,
+td {
+  border: 1px solid transparent; /* ทำให้เส้นขอบเป็นโปร่งใส */
+  border-radius: 10px;
+  text-align: center;
+}
+
+table {
+  width: 1200px;
+}
+td, th {
+  padding: 10px; /* กำหนดระยะห่างของเนื้อหากับขอบของเซลล์ */
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+td:first-child,
+th:first-child {
+  padding-left: 20px;
+}
+
+td:last-child,
+th:last-child {
+  padding-right: 20px;
+}
+th {
+  border-radius: 10px;
+  background-color: #EF4923; /* สีพื้นหลังของหัวข้อ */
+  color: white; /* สีข้อความของหัวข้อ */
+}
+
+td {
+  background-color: antiquewhite;
+}
+.textcontainer-eleven {
+  text-align: center;
+  background-color: #EF4923;
+  color: #fff;
+  border-radius: 10px;
+  width: 250px;
+}
+
+/* Contentss */
+.h1 {
+  font-family: 'Inter';
+  text-shadow: 2px 2px 4px #dcd9d9;
+  margin-left: 50px;
+  color: #EF4923;
+}
+.container-wrapper {
+  display: flex;
+}
+.container-one {
+  box-shadow: 0 0 10px rgba(154, 146, 146, 0.938);
+  border-radius: 10px;
+  margin-left: 50px;
+  width: auto;
+  height: auto;
+  background-color: #f4f4f4;
+}
+.textcontainer-one {
+  border: 10px;
+  margin-left: 40px;
+}
+.textcontainer-one,
+.textcontainer-two {
+  margin-bottom: 1rem;
+}
+.textcontainer-two,
+.textcontainer-three {
+  border: 10px;
+  margin-left: 40px;
+}
+.custom-checkbox {
+  width: 15px;
+  height: 15px;
+  margin-left: 30px;
+  align-items: center;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* เพิ่มระยะห่างของ button container */
+}
+
+.add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+.input-group{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem; 
+}
+.input-group > * {
+  margin-right: 1rem;
+}
+.input-group > *:last-child {
+  margin-right: 0;
+}
+.input-group h4 {
+  margin: 0;
+  padding-right: 1rem;
+}
+.input-group input[type="text"] {
+  flex: 0.5;
+  padding: 0.5rem;
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+.input-group1{
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+.input-group1 h4 {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  margin-right: 10px; /* ปรับตำแหน่งข้อความให้เหมาะสม */
+}
+.input-group1 input {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 30px;
+  width:  1000px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
+  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
+}
+.container-wrapper {
+  flex-direction: column
+}
+
+.container-one {
+  box-shadow: 0 0 23.5px #dcd9d9;
+  border-radius: 10px;
+  margin-left: 50px;
+  width: 900px;
+  height: auto;
+  background-color: #f2f2f2;
+}
+.h2 {
+  margin-left: 45px;
+}
+.custom-checkbox {
+  width: 15px;
+  height: 15px;
+  margin-left: 45px;
+  align-items: center;
+}
+.input-group{
+  margin-left: 45px;
+}
+.input-group input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 800px;
+  height: 30px;
+}
+.input-group1,
+.input-group2 {
+  margin-left: 45px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
+}
+.input-group1 input,
+.input-group2 input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 300px;
+  height: 30px;
+}
+.input-group3 {
+  margin-left: 45px;
+}
+.input-group3 input {
+  margin-bottom: 20px;
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 800px;
+  height: 30px;
+}
+.container-two {
+  box-shadow: 0 0 23.5px #dcd9d9;
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-top: 40px;
+  width: 1100px;
+  height: 1000px;
+  background-color: #f2f2f2;
+}
+.custom-checkbox1,
+.custom-checkbox2 {
+  width: 15px;
+  height: 15px;
+  margin-left: 45px;
+  align-items: center;
+}
+.input-groupp {
+  display: inline-block;
+}
+.input-groupp input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 180px;
+  height: 30px;
+}
+/* Optional: Adjust margin between checkbox and label */
+label {
+  margin-left: 10px; /* ปรับตามความต้องการ */
+}
+.textcontainer-one {
+  margin-left: 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-checkbox1,
+.custom-checkbox2,
+label,
+input {
+  margin-bottom: 5px; /* เพิ่มระยะห่างระหว่างองค์ประกอบ */
+}
+
+/* ให้ input เป็น block เพื่อให้อยู่ในบรรทัดเดียวกับ label */
+input[type="text"] {
+  display: block;
+}
+
+.textcontainer-two {
+  margin-left: 50px;
+}
+.input-group4,
+.input-group5 {
+  margin-left: 45px;
+  display: inline-block;
+  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
+  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
+}
+.input-group4 input,
+.input-group5 input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 300px;
+  height: 30px;
+}
+.input-group6,
+.input-group7 {
+  margin-left: 45px;
+  display: inline-block;
+  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
+  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
+}
+.input-group6 input,
+.input-group7 input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 300px;
+  height: 30px;
+}
+.input-group8,
+.input-group9,
+.input-group10,
+.input-group11,
+.input-group12{
+  margin-left: 45px;
+  display: inline-block;
+  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
+  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
+}
+.input-group8 input, 
+.input-group9 input,
+.input-group10 input,
+.input-group11 input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 300px;
+  height: 30px;
+}
+.input-group12 input {
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 970px;
+  height: 60px;
+}
+.input-group13 {
+  margin-left: 45px;
+}
+.input-group14 input {
+  margin-top: 10px;
+  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  width: 970px;
+  height: 30px;
+}
+.input-group14 {
+  margin-left: 25px;
+}
+.container-three {
+  margin-left: 80px;
+  width: 150px;
+  height: 200px;
+  background-color: #f4f4f4;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* จัดให้ปุ่มอยู่ตรงกลางตามแนวนอน */
+  align-items: center; /* จัดให้ปุ่มอยู่ตรงกลางตามแนวตั้ง */
+  margin-top: 20px; /* เพิ่มช่องว่างด้านบนเพื่อความสวยงาม */
+}
+
+.add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+/* App.css */
+.content {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
