@@ -1,502 +1,807 @@
+/* App.css */
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; /* Ensure main-content wraps its children */
+}
+
+.content-area {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto; 
+  margin: 0;
+}
+
 /* Navbar.css */
 .navbar {
-  width: auto;
+  width: 100%;
   background-color: #EF4923;
   padding: 2rem;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-}
-
-.navbar ul li {
-  margin-right: 1rem;
-}
-
-.navbar ul li a {
-  color: #fff;
-  text-decoration: none;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /* Sidebar.css */
 .sidebar {
   background-color: #f4f4f4;
   width: 200px;
-  height: 1100PX;
+  padding: 1rem;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* content.css */
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .container-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .container-1,
+  .container-3 {
+    width: 48%;
+  }
+
+  .container-2 {
+    width: 100%;
+  }
+  .container-22 {
+  width: 100%;
+  }
+}
+
+.container-1 {
+  flex: 1;
+  width: 60%;
+  height: auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-checkbox1 {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .container-1 {
+    width: 90%;
+    margin-left: 0;
+  }
+}
+
+.container-2 {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
+.rectangle-box {
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+}
+
+.mb-3 {
+  margin-top: 10px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border: 2px solid red;
+}
+
+.container-3 {
+  width: 35%;
+  height: auto;
+}
+
+.input-group2 {
+  margin-top: 20px;
+  width: auto;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.input-group1 {
+  margin-left: 20px;
+}
+
+.input-group1 input[type="text"] {
+  width: 100%;
+  height: 35px;
+  max-width: 600px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group1 input[type="date"] {
+  width: 100%;
+  height: 35px;
+  max-width: 600px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .input-group1 input[type="text"],
+  .input-group3 input[type="text"] {
+    width: 100%;
+  }
+
+  .custom-checkbox,
+  .custom-checkbox1 {
+    width: auto;
+    height: auto;
+  }
+}
+.container-22 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   padding: 1rem;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+.phone-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.sidebar ul li {
-  margin-bottom: 0.5rem;
-}
 
-.sidebar ul li a {
-  color: #333;
-  text-decoration: none;
-}
-/* Contents.css */
-.h1 {
-  font-family: 'Inter';
-text-shadow: 2px 2px 4px #dcd9d9;
-margin-left: 50px;
-color: #EF4923;
-}
+/* contents.css*/
 
-.container-wrapper {
-  flex-wrap: wrap; /* เพิ่ม flex-wrap เพื่อให้ขอบเขตของ container ไม่เกินขอบจอ */
-  flex-direction: column
-
-
-}
-
-.container-one,
-.container-two,
-.container-three,
-.container-four,
-.container-five,
-.container-six {
-  margin: 20px; /* เพิ่ม margin ระหว่าง container */
-}
-
-.container-one,
-.container-two,
-.container-three,
-.container-four,
-.container-five,
-.container-six {
-  box-shadow: 0 0 10px rgba(154, 146, 146, 0.938);
+.container-a,
+.container-b,
+.container-c,
+.container-d,
+.container-e,
+.container-f {
+  background-color: #f2f2f2;
   border-radius: 10px;
-  background-color: #f4f4f4;
-  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
-.textcontainer-one,
-.textcontainer-two,
-.textcontainer-three,
-.textcontainer-four,
-.textcontainer-five,
+.container-a {
+  margin-bottom: 10px;
+}
+/* Table styles */
+/* Container A */
+.container-a table {
+  width: 50px;
+}
+/* Container A */
+.container-a table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 10px; 
+  margin-bottom: 20px;
+  text-align: center; 
+}
+.container-a th,
+.container-a td {
+  padding: 5px; 
+  border-radius: 8px; 
+  background-color: white;
+}
+.container-a th {
+  background-color: #f44336; 
+  color: white; 
+}
+.container-a .degree-column {
+  background-color: #f09d8a;
+}
+.container-a .degrees-column {
+  background-color: #f44336;
+}
+
+/* Container B */
+.container-b table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px; 
+  margin-bottom: 20px;
+  text-align: center; 
+}
+.container-b th,
+.container-b td {
+  padding: 5px; 
+  border-radius: 8px;
+  background-color: white;
+}
+.container-b th {
+  background-color: #f44336; 
+  color: white; 
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.left-side .textcontainer-six,
+.left-side .textcontainer-seven,
+.right-side .textcontainer-eight,
+.right-side .input-groupb {
+  margin-bottom: 16px;
+}
+
 .textcontainer-six,
 .textcontainer-seven,
 .textcontainer-eight,
-.textcontainer-nine,
-.textcontainer-ten {
-  margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างหัวข้อ */
+.input-groupb {
+  display: flex;
+  flex-direction: column;
 }
 
 .custom-checkbox {
-  margin-right: 10px; /* ปรับระยะห่างของ checkbox */
-  vertical-align: middle;
+  margin-left: 10px;
 }
-.input-group1{
-  margin-bottom: 10px;
-}
-.input-group1 input {
-  border: #f2f2f2;
-  border-radius: 5px;
-  height: 30px;
-  width:  1100px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
-  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
-}
-.input-group{
-  margin-bottom: 10px; /* เพิ่มระยะห่างของ input group */
-}
-.input-group h4 {
-  display: inline-block;
-  margin-right: 10px; /* ปรับตำแหน่งข้อความให้เหมาะสม */
-}
-.input-group input {
-  border: #f2f2f2;
-  border-radius: 5px;
-  height: 30px;
-  width:  200px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
-  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
-}
-.input-group2 {
-  margin-bottom: 10px;
-}
-.input-group2 input {
-  border: #f2f2f2;
-  border-radius: 5px;
-  height: 30px;
-  width:  1100px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
-  margin-right: 30px; 
-}
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; /* เพิ่มระยะห่างของ button container */
+.single-input input {
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
 }
 
-.add-button {
+.input-groupa input,
+.input-groupb input,
+.input-groupc input {
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+}
+.input-groupb [input= "text"],
+.input-groupb [input= "date"] {
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 8px;
+}
+.container-e {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.left-side .textcontainer-six,
+.left-side .textcontainer-seven,
+.right-side .textcontainer-eight,
+.right-side .input-groupb {
+  margin-bottom: 16px;
+}
+
+.textcontainer-six,
+.textcontainer-seven,
+.textcontainer-eight,
+.input-groupb {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-group {
+  display: flex;
+}
+
+.checkbox-group input {
+  margin: 0 10px 0 0;
+}
+
+.custom-checkbox {
+  margin-left: 10px;
+}
+
+.input-groupc input {
+  width: 100%; 
+  padding: 5px; 
+  box-sizing: border-box;
+  margin-top: 8px;
+  font-size: 16px; 
+}
+
+/* Container F */
+.container-f {
+  height: 300px;
+
+}
+.container-f table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 10px; 
+  margin-bottom: 20px;
+  text-align: center; 
+  border-radius: 8px;
+  table-layout: fixed; /* ให้ความกว้างของคอลัมน์คงที่ */
+}
+.container-f th,
+.container-f td {
+  padding: 5px; 
+  border-radius: 8px; 
+  background-color: white;
+}
+.add-button1{
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: none;
+  margin-left: 20px;
+  width: 200px;
+}
+.add-button1:hover {
+  background-color: #f09d8a;
+}
+.input-groupd1 {
+  width: auto;
+  height: auto;
+  align-items: center;
+}
+.container-f .id1-column {
+  background-color: #EF4923; 
+}
+
+.container-f .idd-column {
+  background-color: #f09d8a; 
+}
+.container-f .delete-button {
+  background-color: #EF4923; 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  cursor: pointer;
+}
+.container-f .delete-button:hover {
+  background-color: #f09d8a;
+}
+.container-f [input="text"] {
+  border-radius: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container-f .delete-button:hover {
+  background-color: #f09d8a;
+}
+.container-f th {
+  background-color: #f44336; 
+  color: white; 
+}
+.container-d {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding: 20px;
+}
+
+/* Single input for name */
+.single-input {
+  margin-bottom: 20px;
+}
+.single-input h4 {
+  margin-bottom: 8px;
+}
+
+.single-input input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+
+.input-groupa {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.left-side h4,
+.right-side h4 {
+  margin-bottom: 8px;
+}
+
+.left-side input,
+.right-side input {
+  margin-bottom: 16px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.h3{
+  color:#fff;
+  background-color: #f44336;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+th.degrees-column, td.degrees-column {
+  width: 20%; 
+  text-align: center;
+
+}
+th.degree-column, td.degree-column {
+  width: 20%; 
+  text-align: center;
+
+}
+
+th.institution-column, td.institution-column {
+  width: 30%;
+  text-align: center;
+
+}
+
+th.location-column, td.location-column {
+  width: 25%;
+  text-align: center;
+
+}
+
+th.duration-column, td.duration-column {
+  width: 25%;
+  text-align: center;
+
+}
+
+td input[type="text"] {
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+
+th.duration-column, td.duration-column {
+  width: 20%;
+  text-align: center;
+}
+
+th.workplace-column, td.workplace-column {
+  width: 25%;
+  text-align: center;
+}
+
+th.position-column, td.position-column {
+  width: 20%;
+  text-align: center;
+}
+
+th.salary-column, td.salary-column {
+  width: 15%;
+  text-align: center;
+}
+
+th.reason-column, td.reason-column {
+  width: 20%;
+  text-align: center;
+}
+
+th.idd-column, td.idd-column {
+  width: 10%;
+  text-align: center;
+}
+th.id1-column, td.id1-column {
+  width: 10%;
+  text-align: center;
+}
+th.document-column, td.document-column {
+  width: 70%;
+  text-align: center;
+}
+td input[type="text"] {
+  width: 100%;
+  box-sizing: border-box; 
+  border: none; 
+  padding: 4px; 
+  background-color: transparent;
+}
+
+td input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+  background-color: #f9f9f9;
+}
+.add-button3 {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
   color: #fff;
   cursor: pointer;
   margin-right: 10px;
+  background-color: #009028;
+}
+.add-button3:hover{
+  background-color: #00902969;
 }
 
-.add-button:hover {
-  background-color: #0056b3;
-}
-tth,
-td {
-  border: 1px solid transparent; /* ทำให้เส้นขอบเป็นโปร่งใส */
-  border-radius: 10px;
-  text-align: center;
-}
 
-table {
-  width: 1200px;
-}
-td, th {
-  padding: 10px; /* กำหนดระยะห่างของเนื้อหากับขอบของเซลล์ */
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
-td:first-child,
-th:first-child {
-  padding-left: 20px;
-}
-
-td:last-child,
-th:last-child {
-  padding-right: 20px;
-}
-th {
-  border-radius: 10px;
-  background-color: #EF4923; /* สีพื้นหลังของหัวข้อ */
-  color: white; /* สีข้อความของหัวข้อ */
-}
-
-td {
-  background-color: antiquewhite;
-}
-.textcontainer-eleven {
-  text-align: center;
-  background-color: #EF4923;
-  color: #fff;
-  border-radius: 10px;
-  width: 250px;
-}
-
-/* Contentss */
+/* contentss.css */
 .h1 {
   font-family: 'Inter';
   text-shadow: 2px 2px 4px #dcd9d9;
   margin-left: 50px;
   color: #EF4923;
 }
+.h2 {
+  margin-left: 30px;
+}
 .container-wrapper {
-  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
 }
+
 .container-one {
-  box-shadow: 0 0 10px rgba(154, 146, 146, 0.938);
-  border-radius: 10px;
-  margin-left: 50px;
-  width: auto;
-  height: auto;
-  background-color: #f4f4f4;
-}
-.textcontainer-one {
-  border: 10px;
-  margin-left: 40px;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px #dcd9d9;
+  padding: 1rem;
+  margin: 20px;
 }
 .textcontainer-one,
 .textcontainer-two {
   margin-bottom: 1rem;
 }
-.textcontainer-two,
-.textcontainer-three {
-  border: 10px;
-  margin-left: 40px;
-}
+
 .custom-checkbox {
-  width: 15px;
-  height: 15px;
-  margin-left: 30px;
+  width: 20px;
+  height: 20px;
   align-items: center;
+  margin-right: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  margin: 30px;
+}
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  margin: 20px;
+}
+
+.input-group:last-child {
+  margin-right: 0;
+}
+
+.input-group h4 {
+  margin: 0 0 0.5rem 0;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group input[type="date"] {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .input-group:last-child {
+    margin-bottom: 0;
+  }
+}
+.textcontainer-two {
+  margin-bottom: 1rem;
+}
+
+.left-side2,
+.right-side2 {
+  flex: 1;
+}
+
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .input-group input[type="number"],
+  .input-group input[type="date"] {
+    width: 100%; 
+  }
+}
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.birthdate-input {
+  display: flex;
+  align-items: center;
+}
+
+.add-button {
+  margin-left: 20px;
+}
+.container-one table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 10px; 
+  margin-bottom: 20px;
+  text-align: center; 
+  border-radius: 8px;
+  table-layout: fixed; 
+}
+.long-input {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .long-input {
+    width: 100%;
+  }
+}
+
+.container-one th,
+.container-one td {
+  padding: 5px; 
+  border-radius: 8px; 
+  background-color: white;
+}
+.container-one .id2-column {
+  background-color: #f44336; 
+  color:#fff;
+}
+
+.container-one .namee-column {
+  background-color: #f44336; 
+  color: #fff;
+}
+.container-one .id-column {
+  background-color: #f09d8a; 
+  color:#fff;
+}
+.container-one .delete-button1 {
+  background-color: #EF4923; 
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.container-one .delete-button1:hover {
+  background-color: #f09d8a;
+}
+.container-one [input="text"] {
+  border-radius: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+th.id-column, td.id-column {
+  width: 10%;
+  text-align: center;
+}
+th.id2-column, td.id2-column {
+  width: 10%;
+  text-align: center;
+}
+.delete-button1 {
+  width: 10px;
 }
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* เพิ่มระยะห่างของ button container */
+  align-items: center;
+  margin-top: 20px;
 }
-
 .add-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #EF4923;
   color: #fff;
   cursor: pointer;
   margin-right: 10px;
 }
 
 .add-button:hover {
-  background-color: #0056b3;
-}
-.input-group{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 1rem; 
-}
-.input-group > * {
-  margin-right: 1rem;
-}
-.input-group > *:last-child {
-  margin-right: 0;
-}
-.input-group h4 {
-  margin: 0;
-  padding-right: 1rem;
-}
-.input-group input[type="text"] {
-  flex: 0.5;
-  padding: 0.5rem;
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-}
-.input-group1{
-  margin-left: 60px;
-  margin-bottom: 10px;
-}
-.input-group1 h4 {
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  margin-right: 10px; /* ปรับตำแหน่งข้อความให้เหมาะสม */
-}
-.input-group1 input {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  height: 30px;
-  width:  1000px; /* ให้ input ครอบคลุมครึ่งหนึ่งของ input-group */
-  margin-right: 30px; /* ปรับตำแหน่ง input ให้เหมาะสม */
-}
-.container-wrapper {
-  flex-direction: column
-}
-
-.container-one {
-  box-shadow: 0 0 23.5px #dcd9d9;
-  border-radius: 10px;
-  margin-left: 50px;
-  width: 900px;
-  height: auto;
-  background-color: #f2f2f2;
-}
-.h2 {
-  margin-left: 45px;
-}
-.custom-checkbox {
-  width: 15px;
-  height: 15px;
-  margin-left: 45px;
-  align-items: center;
-}
-.input-group{
-  margin-left: 45px;
-}
-.input-group input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 800px;
-  height: 30px;
-}
-.input-group1,
-.input-group2 {
-  margin-left: 45px;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
-}
-.input-group1 input,
-.input-group2 input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 300px;
-  height: 30px;
-}
-.input-group3 {
-  margin-left: 45px;
-}
-.input-group3 input {
-  margin-bottom: 20px;
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 800px;
-  height: 30px;
-}
-.container-two {
-  box-shadow: 0 0 23.5px #dcd9d9;
-  border-radius: 10px;
-  margin-left: 50px;
-  margin-top: 40px;
-  width: 1100px;
-  height: 1000px;
-  background-color: #f2f2f2;
-}
-.custom-checkbox1,
-.custom-checkbox2 {
-  width: 15px;
-  height: 15px;
-  margin-left: 45px;
-  align-items: center;
-}
-.input-groupp {
-  display: inline-block;
-}
-.input-groupp input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 180px;
-  height: 30px;
-}
-/* Optional: Adjust margin between checkbox and label */
-label {
-  margin-left: 10px; /* ปรับตามความต้องการ */
-}
-.textcontainer-one {
-  margin-left: 45px;
-  display: flex;
-  flex-direction: column;
-}
-
-.custom-checkbox1,
-.custom-checkbox2,
-label,
-input {
-  margin-bottom: 5px; /* เพิ่มระยะห่างระหว่างองค์ประกอบ */
-}
-
-/* ให้ input เป็น block เพื่อให้อยู่ในบรรทัดเดียวกับ label */
-input[type="text"] {
-  display: block;
-}
-
-.textcontainer-two {
-  margin-left: 50px;
-}
-.input-group4,
-.input-group5 {
-  margin-left: 45px;
-  display: inline-block;
-  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
-  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
-}
-.input-group4 input,
-.input-group5 input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 300px;
-  height: 30px;
-}
-.input-group6,
-.input-group7 {
-  margin-left: 45px;
-  display: inline-block;
-  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
-  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
-}
-.input-group6 input,
-.input-group7 input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 300px;
-  height: 30px;
-}
-.input-group8,
-.input-group9,
-.input-group10,
-.input-group11,
-.input-group12{
-  margin-left: 45px;
-  display: inline-block;
-  vertical-align: top; /* อาจจะจำเป็นต้องเพิ่มบางครั้งเพื่อให้สอดคล้องกับการจัดวางของคุณ */
-  margin-right: 100px; /* เพิ่มระยะห่างระหว่าง input groups ตามความเหมาะสม */
-}
-.input-group8 input, 
-.input-group9 input,
-.input-group10 input,
-.input-group11 input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 300px;
-  height: 30px;
-}
-.input-group12 input {
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 970px;
-  height: 60px;
-}
-.input-group13 {
-  margin-left: 45px;
-}
-.input-group14 input {
-  margin-top: 10px;
-  border-radius: 8px; /* เพิ่มความโค้งมนของมุม */
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-  width: 970px;
-  height: 30px;
-}
-.input-group14 {
-  margin-left: 25px;
-}
-.container-three {
-  margin-left: 80px;
-  width: 150px;
-  height: 200px;
-  background-color: #f4f4f4;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center; /* จัดให้ปุ่มอยู่ตรงกลางตามแนวนอน */
-  align-items: center; /* จัดให้ปุ่มอยู่ตรงกลางตามแนวตั้ง */
-  margin-top: 20px; /* เพิ่มช่องว่างด้านบนเพื่อความสวยงาม */
-}
-
-.add-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  margin-right: 10px;
-}
-.add-button:hover {
-  background-color: #0056b3;
-}
-
-/* App.css */
-.content {
-  display: flex;
-}
-
-.main-content {
-  flex: 1;
-  padding: 1rem;
+  background-color: #f09d8a;
 }

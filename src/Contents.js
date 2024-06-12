@@ -1,236 +1,442 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './App.css';
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-function Contents() {
-  const navigate = useNavigate(); // เรียกใช้ hook useNavigate ในการนำทาง
+import axios from 'axios'; // นำเข้า axios สำหรับการส่งคำขอ HTTP
 
-  // สร้าง state เพื่อเก็บค่าการติ้กของแต่ละ checkbox
+function Contents() {
+  const navigate = useNavigate();
+
   const [checkboxes, setCheckboxes] = useState({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
-    checkbox5: false,
-    checkbox6: false,
-    checkbox7: false,
-    checkbox8: false,
-    checkbox9: false,
-    checkbox10: false,
-    checkbox11: false
+    familyStatus: false,
+    marriageRegistration: false,
+    childrenStatus: false,
+    canRideBicycle: false,
+    canRideMotorcycle: false,
+    temporaryLicense: false,
+    permanentLicense: false,
+    canTravel: false,
+    cannotTravel: false,
+    otherReason: false,
+    hasBankAccount: false,
+    noBankAccount: false,
   });
 
+  const [educationData, setEducationData] = useState([
+    { degree: "ประถมศึกษาปีที่ 1-6", institution: "", location: "", duration: "" },
+    { degree: "มัธยมศึกษาปีที่ 1-3/ ปสช.", institution: "", location: "", duration: "" },
+    { degree: "มัธยมศึกษาปีที่ 1-3/ ปสช.", institution: "", location: "", duration: "" },
+    { degree: "มัธยมศึกษาปีที่ 4-6/ ปวส.", institution: "", location: "", duration: "" },
+    { degree: "ปริญญาตรี", institution: "", location: "", duration: "" },
+    { degree: "อื่นๆ", institution: "", location: "", duration: "" }
+  ]);
+
+  const [workHistory, setWorkHistory] = useState([
+    { duration: "", workplace: "", position: "", lastSalary: "", reasonForLeaving: "" },
+    { duration: "", workplace: "", position: "", lastSalary: "", reasonForLeaving: "" },
+    { duration: "", workplace: "", position: "", lastSalary: "", reasonForLeaving: "" }
+  ]);
+
+  const [documents, setDocuments] = useState([
+    { id: 1, name: "" },
+    { id: 2, name: "" }
+  ]);
+  const [isReadyToSave, setIsReadyToSave] = useState(false); 
+  
   const handleCheck = (checkboxName) => {
-    // สร้างคัวสำหรับเก็บค่าของ checkbox ใหม่
-    const newCheckboxes = { ...checkboxes };
-    // เปลี่ยนสถานะของ checkbox นั้นๆ
-    newCheckboxes[checkboxName] = !newCheckboxes[checkboxName];
-    // อัปเดต state ของ checkboxes
-    setCheckboxes(newCheckboxes);
+    setCheckboxes((prevState) => {
+      return {
+        ...prevState,
+        [checkboxName]: !prevState[checkboxName],
+      };
+    });
+    setIsReadyToSave(false);
+  };
+  
+  const deleteDocument = (id) => {
+    const isConfirmed = window.confirm("คุณต้องการลบข้อมูลใช่หรือไม่?");
+    if (isConfirmed) {
+      setDocuments(documents.filter(doc => doc.id !== id));
+      setIsReadyToSave(false); 
+    }
   };
 
-  // ตั้งค่าหัวข้อหน้าเว็บเมื่อ Component ถูกโหลด
+  const handleEducationChange = (index, field, value) => {
+    const updatedEducationData = [...educationData];
+    updatedEducationData[index][field] = value;
+    setEducationData(updatedEducationData);
+  };
+
+  const handleWorkHistoryChange = (index, field, value) => {
+    const updatedWorkHistory = [...workHistory];
+    updatedWorkHistory[index][field] = value;
+    setWorkHistory(updatedWorkHistory);
+  };
+
+  const handleDocumentChange = (index, value) => {
+    const updatedDocuments = [...documents];
+    updatedDocuments[index].name = value;
+    setDocuments(updatedDocuments);
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    axios.post('http://localhost:3000/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      alert('ไฟล์ถูกอัปโหลดสำเร็จ');
+    })
+    .catch(error => {
+      console.error('เกิดข้อผิดพลาดในการอัปโหลดไฟล์', error);
+    });
+  };
+
   useEffect(() => {
     document.title = "น้องต้นแขมอิอิ";
   }, []);
+  useEffect(() => {
+    const allChecked = Object.values(checkboxes).every(value => value === true);
+    setIsReadyToSave(allChecked);
+  }, [checkboxes]);
+
   const handleNextPage = () => {
-    navigate('/content'); // นำทางไปยังหน้า '/contentss' โดยใช้ hook useNavigate
+    navigate('/contentss');
+  };
+  const handleSave = () => {
+    if (isReadyToSave) {
+      console.log("บันทึกข้อมูล...");
+    }
   };
 
   return (
     <div>
-      <Navbar /> {/* ตรวจสอบการใช้ Component */}
-        <Sidebar />
       <div className="h1">
-      <h1>ใบรับสมัครพนังงาน</h1>
+        <h1>ใบรับสมัครพนังงาน</h1>
       </div>
       <div className="container-wrapper">
-        <div className="container-one">
-          <div className="textcontainer-one">
-            <h2>ประวัติการศึกษา</h2>
+        <div className="container-a">
+          <div className="textcontainer-a">
+            <div className="h2">
+              <h2>ประวัติการศึกษา</h2>
+            </div>
           </div>
           <table>
-    <tr>
-    <th>วุฒิการศึกษา</th>
-    <th>ชื่อสถานการศึกษา</th>
-    <th>ที่ตั้ง</th>
-    <th>ระยะเวลาที่ศึกษา ตั้งแต่ต้นจนจบ</th>
-  </tr>
-  <tr>
-    <td>ประถมศึกษาปีที่1-6</td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>มัธยมศึกษาปีที่1-3/ ปสช.</td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>มัธยมศึกษาปีที่1-3/ ปสช.</td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>มัธยมศึกษาปีที่4-6/ ปวส.</td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>ปริญญาตรี</td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td> อื่นๆ </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-</table>
+            <thead>
+              <tr>
+                <th className="degrees-column">วุฒิการศึกษา</th>
+                <th className="institution-column">ชื่อสถานการศึกษา</th>
+                <th className="location-column">ที่ตั้ง</th>
+                <th className="duration-column">ระยะเวลาที่ศึกษา ตั้งแต่ต้นจนจบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {educationData.map((education, index) => (
+                <tr key={index}>
+                  <td className="degree-column">{education.degree}</td>
+                  <td className="institution-column">
+                    <input
+                      type="text"
+                      value={education.institution}
+                      onChange={(e) => handleEducationChange(index, 'institution', e.target.value)}
+                    />
+                  </td>
+                  <td className="location-column">
+                    <input
+                      type="text"
+                      value={education.location}
+                      onChange={(e) => handleEducationChange(index, 'location', e.target.value)}
+                    />
+                  </td>
+                  <td className="duration-column">
+                    <input
+                      type="text"
+                      value={education.duration}
+                      onChange={(e) => handleEducationChange(index, 'duration', e.target.value)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+        <div className="container-b">
+          <div className="textcontainer-b">
+            <div className="h2">
+              <h2>ประวัติการทำงาน</h2>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th className="duration-column">ระยะเวลาทำงาน</th>
+                <th className="workplace-column">ชื่อสถานที่ทำงานและที่อยู่</th>
+                <th className="position-column">ตำแหน่งหน้าที่ที่รับผิดชอบโดยสังเขป</th>
+                <th className="salary-column">เงินเดือนครั้งสุดท้าย</th>
+                <th className="reason-column">สาเหตุที่ออกมาจาก</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workHistory.map((item, index) => (
+                <tr key={index}>
+                  <td className="duration-column">
+                    <input
+                      type="text"
+                      value={item.duration}
+                      onChange={(e) => handleWorkHistoryChange(index, 'duration', e.target.value)}
+                    />
+                  </td>
+                  <td className="workplace-column">
+                    <input
+                      type="text"
+                      value={item.workplace}
+                      onChange={(e) => handleWorkHistoryChange(index, 'workplace', e.target.value)}
+                    />
+                  </td>
+                  <td className="position-column">
+                    <input
+                      type="text"
+                      value={item.position}
+                      onChange={(e) => handleWorkHistoryChange(index, 'position', e.target.value)}
+                    />
+                  </td>
+                  <td className="salary-column">
+                    <input
+                      type="text"
+                      value={item.lastSalary}
+                      onChange={(e) => handleWorkHistoryChange(index, 'lastSalary', e.target.value)}
+                    />
+                  </td>
+                  <td className="reason-column">
+                    <input
+                      type="text"
+                      value={item.reasonForLeaving}
+                      onChange={(e) => handleWorkHistoryChange(index, 'reasonForLeaving', e.target.value)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className="container-four">
-        <div className="textcontainer-four">
-            <h2>กรณีเกิดอุบัติเหตุหรือเรื่องฉุกเฉิน บุคคลที่สามารถติดต่อได้</h2>
+      </div>
+      <div className="container-c">
+        <div className="textcontainer-c">
+          <div className="h2">
+            <h2>สมุดบัญชีธนาคาร</h2>
           </div>
-        <div className="input-group">
-           <h4>ชื่อ - นามสกุล</h4>
-           <input type="text" id="emergencyName" name="emergencyName" />
-           <h4>เบอร์โทรศัพท์ที่ติดต่อได้</h4>
-           <input type="text" id="emergencyContact" name="emergencyContact" />
-           <h4>เบอร์โทรศัพท์พ่อ/แม่</h4>
-           <input type="text" id="parentContact" name="parentContact" />
-           <h4>เบอร์โทรศัพท์พี่/น้อง</h4>
-            <input type="text" id="" name="fname" />
-            <h4>เบอร์โทรศัพท์ญาติ</h4>
-            <input type="text" id="department" name="department" />
-        </div>
-        </div>
-        <div className="container-five">
-        <div className="textcontainer-five">
-            <h2>ความสามารถพิเศษ</h2>
-          </div>
-          <div className="textcontainer-six">
-            <h4>ขับขี่จักรยาน</h4>
-          </div>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox3}
-            onChange={() => handleCheck("checkbox3")}
-            className="custom-checkbox"
-          />
-          <label> ได้ </label>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox4}
-            onChange={() => handleCheck("checkbox4")}
-            className="custom-checkbox"
-          />
-          <label> ไม่ได้ </label>
-          <div className="textcontainer-seven">
-            <h4>ขับขี่จักรยานยนต์</h4>
-          </div>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox5}
-            onChange={() => handleCheck("checkbox5")}
-            className="custom-checkbox"
-          />
-          <label> ได้ </label>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox6}
-            onChange={() => handleCheck("checkbox6")}
-            className="custom-checkbox"
-          />
-          <label> ไม่ได้ </label>
-          <div className="textcontainer-eight">
-            <h4>ใบอนุญาตขับขี่ประเภท</h4>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox7}
-            onChange={() => handleCheck("checkbox7")}
-            className="custom-checkbox"
-          />
-          <label> ชั่วคราว </label>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox8}
-            onChange={() => handleCheck("checkbox8")}
-            className="custom-checkbox"
-          />
-          <label> ตลอดชีพ </label>
-          </div>
-          <div className="input-group">
-            <h4>ใบอนุญาตขับขี่เลขที่</h4>
-            <input type="text" id="department" name="department" />
-            <h4>วันหมดอายุ</h4>
-            <input type="text" id="department" name="department" />
-          </div>
-          <div className="textcontainer-nine">
-            <h4>สามารถและพร้อมที่จะเดินทางไปปฎิบัติงานในสถานที่ต่างๆ ได้หรือไม่ เพราะเหตุผลใด</h4>
+          <div className="checkbox-group">
             <input
-            type="checkbox"
-            checked={checkboxes.checkbox9}
-            onChange={() => handleCheck("checkbox9")}
-            className="custom-checkbox"
-          />
-          <label> ได้ </label>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox10}
-            onChange={() => handleCheck("checkbox10")}
-            className="custom-checkbox"
-          />
-          <label> ไม่ได้ </label>
-          <input
-            type="checkbox"
-            checked={checkboxes.checkbox11}
-            onChange={() => handleCheck("checkbox11")}
-            className="custom-checkbox"
-          />
-          <label> อื่นๆ  </label>
+              type="checkbox"
+              checked={checkboxes.hasBankAccount}
+              onChange={() => handleCheck('hasBankAccount')}
+              className="custom-checkbox"
+            />
+            <label>มีสมุดบัญชีธนาคาร</label>
           </div>
-          <div className="input-group2">
-            <input type="text" id="department" name="department" />
+          <div className="checkbox-group">
+            <input
+              type="checkbox"
+              checked={checkboxes.noBankAccount}
+              onChange={() => handleCheck('noBankAccount')}
+              className="custom-checkbox"
+            />
+            <label>ไม่มีสมุดบัญชีธนาคาร</label>
+          </div>
+          <div className="input-row">
+            <div className="input-group">
+              <div className="left-side">
+                <h4>ชื่อธนาคาร</h4>
+                <input type="text" id="bankname" name="bankname" />
+              </div>
+              <div className="right-side">
+                <h4>สาขา</h4>
+                <input type="text" id="bankBranch" name="bankBranch" />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="container-six">
-        <div className="textcontainer-ten">
+      </div>
+      <div className="container-d">
+        <div className="textcontainer-d">
+          <h2>กรณีเกิดอุบัติเหตุหรือเรื่องฉุกเฉิน บุคคลที่สามารถติดต่อได้</h2>
+        </div>
+        <div className="single-input">
+          <h4>ชื่อ - นามสกุล</h4>
+          <input type="text" id="emergencyName" name="emergencyName" />
+        </div>
+        <div className="input-groupa">
+          <div className="left-side">
+            <h4>เบอร์โทรศัพท์ที่ติดต่อได้</h4>
+            <input type="text" id="parentContact" name="parentContact" />
+            <h4>เบอร์โทรศัพท์พี่/น้อง</h4>
+            <input type="text" id="Contact" name="Contact" />
+          </div>
+          <div className="right-side">
+            <h4>เบอร์โทรศัพท์พ่อ/แม่</h4>
+            <input type="text" id="emergencyContact" name="emergencyContact" />
+            <h4>เบอร์โทรศัพท์ญาติ</h4>
+            <input type="text" id="Contactt" name="Contactt" />
+          </div>
+        </div>
+      </div>
+      <div className="container-e">
+        <div className="textcontainer-e">
+          <h2>ความสามารถพิเศษ</h2>
+        </div>
+        <div className="flex-row">
+          <div className="left-side">
+            <div className="textcontainer-six">
+              <h4>ขับขี่จักรยาน</h4>
+              <div className="checkbox-group">
+                <input
+                  type="checkbox"
+                  checked={checkboxes.canRideBicycle}
+                  onChange={() => handleCheck("canRideBicycle")}
+                  className="custom-checkbox"
+                />
+                <label> ได้ </label>
+                <input
+                  type="checkbox"
+                  checked={!checkboxes.canRideBicycle}
+                  onChange={() => handleCheck("canRideBicycle")}
+                  className="custom-checkbox"
+                />
+                <label> ไม่ได้ </label>
+              </div>
+            </div>
+            <div className="textcontainer-seven">
+              <h4>ขับขี่จักรยานยนต์</h4>
+              <div className="checkbox-group">
+                <input
+                  type="checkbox"
+                  checked={checkboxes.canRideMotorcycle}
+                  onChange={() => handleCheck("canRideMotorcycle")}
+                  className="custom-checkbox"
+                />
+                <label> ได้ </label>
+                <input
+                  type="checkbox"
+                  checked={!checkboxes.canRideMotorcycle}
+                  onChange={() => handleCheck("canRideMotorcycle")}
+                  className="custom-checkbox"
+                />
+                <label> ไม่ได้ </label>
+              </div>
+              <div className="textcontainer-eight">
+                <h4>ใบอนุญาตขับขี่ประเภท</h4>
+                <div className="checkbox-group">
+                  <input
+                    type="checkbox"
+                    checked={checkboxes.temporaryLicense}
+                    onChange={() => handleCheck("temporaryLicense")}
+                    className="custom-checkbox"
+                  />
+                  <label> ชั่วคราว </label>
+                  <input
+                    type="checkbox"
+                    checked={!checkboxes.permanentLicense}
+                    onChange={() => handleCheck("permanentLicense")}
+                    className="custom-checkbox"
+                  />
+                  <label> ตลอดชีพ </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="input-groupb">
+              <h4>ใบอนุญาตขับขี่เลขที่</h4>
+              <input type="text" id="licenseNumber" name="licenseNumber" />
+              <h4>วันหมดอายุ</h4>
+              <input type="date" id="expiryDate" name="expiryDate" />
+            </div>
+          </div>
+        </div>
+        <div className="textcontainer-nine">
+          <h4>สามารถและพร้อมที่จะเดินทางไปปฎิบัติงานในสถานที่ต่างๆ ได้หรือไม่ เพราะเหตุผลใด</h4>
+          <div className="checkbox-group">
+            <input
+              type="checkbox"
+              checked={checkboxes.canTravel}
+              onChange={() => handleCheck("canTravel")}
+              className="custom-checkbox"
+            />
+            <label> ได้ </label>
+            <input
+              type="checkbox"
+              checked={checkboxes.cannotTravel}
+              onChange={() => handleCheck("cannotTravel")}
+              className="custom-checkbox"
+            />
+            <label> ไม่ได้ </label>
+            <input
+              type="checkbox"
+              checked={checkboxes.otherReason}
+              onChange={() => handleCheck("otherReason")}
+              className="custom-checkbox"
+            />
+            <label> อื่นๆ </label>
+          </div>
+        </div>
+        <div className="input-groupc">
+          <input type="text" id="reason" name="reason" />
+        </div>
+      </div>
+      <div className="container-f">
+        <div className="textcontainer-f">
+          <div className="h2">
             <h2>เอกสารเพิ่มเติม</h2>
           </div>
-          <div className="textcontainer-eleven">
-          <h3>อัพโหลดเอกสารเพิ่มเติม</h3>
-          </div>
-        <table>
-  <tr>
-    <th>ลำดับ</th>
-    <th>รายชื่อเอกสาร</th> 
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
         </div>
+        <div className="textcontainer-eleven">
+        <input
+                  aria-label="อัปโหลดไฟล์"
+                  data-test-id="storyboard-upload-input"
+                  id="storyboard-upload-input"
+                  multiple=""
+                  tabIndex="0"
+                  type="file"
+                  className="add-button1"
+                />
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th className="id1-column">ลำดับ</th>
+              <th className="document-column">รายชื่อเอกสาร</th>
+            </tr>
+          </thead>
+          <tbody>
+            {documents.map((document, index) => (
+              <tr key={document.id}>
+                <td className="idd-column">{index + 1}</td>
+                <td className="document-column">
+                  <div className="input-groupd1">
+                    <input
+                      type="text"
+                      value={document.name}
+                      onChange={(e) => handleDocumentChange(index, e.target.value)}
+                    />
+                  </div>
+                </td>
+                  <button className="delete-button" onClick={() => deleteDocument(document.id)}>ลบ</button>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="button-container">
-        <button type="button" className="add-button">
-          บันทึกข้อมูล
-        </button>
         <button type="button" className="add-button" onClick={handleNextPage}>
-          ถัดไป
+          ย้อนกลับ
         </button>
+        <button type="button" className="add-button3" onClick={handleSave} disabled={!isReadyToSave}>
+        บันทึก
+      </button>
       </div>
     </div>
   );
