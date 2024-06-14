@@ -123,31 +123,32 @@ function Content() {
                     <label>เจ้าหน้าที่แนะนำ</label>
                   </div>
                   <div class="row">
-                    <div class="col-md-12">
-                      <h4>ชื่อ - นามสกุล (ผู้ที่แนะนำมาสมัคร)</h4>
-                      <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} class="form-control" />
+                    <div class="col-md-9">
                     </div>
                   </div>
-                  <br />
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h4>หน่วยงาน</h4>
-                      <input type="text" id="agency" name="agency" value={formData.agency} onChange={handleChange} class="form-control" />
-                    </div>
-                    <div class="col-md-6">
-                      <h4>เบอร์โทรศัพท์</h4>
-                      <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} class="form-control" />
-                    </div>
+                  <div className="input-group1">
+                    <h4>ชื่อ - นามสกุล (ผู้ที่แนะนำมาสมัคร)</h4>
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} class="form-control" />
                   </div>
-                  <br />
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4>เลขที่หลังบัตรประชาชนผู้สมัคร (เพื่อใช้ยื่นแสดงรายได้ประจำปี)</h4>
-                      <input type="text" id="idNumber" name="idNumber" value={formData.idNumber} onChange={handleChange} class="form-control" />
-                    </div>
-                  </div>
+                  <Row>
+                    <Col md={6}>
+                      <div className="input-group">
+                        <h4>หน่วยงาน</h4>
+                        <input type="text" id="agency" name="agency" value={formData.agency} onChange={handleChange} class="form-control" />
+                      </div>
+                    </Col>
+                    <Col md={6}>
+                      <div className="input-group">
+                        <h4>เบอร์โทรศัพท์</h4>
+                        <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} class="form-control" />
+                      </div>
+                    </Col>
+                  </Row>
+                  <div className="input-group1">
+                    <h4>เลขที่หลังบัตรประชาชนผู้สมัคร (เพื่อใช้ยื่นแสดงรายได้ประจำปี)</h4>
+                    <input type="text" id="idNumber" name="idNumber" value={formData.idNumber} onChange={handleChange} class="form-control" />
 
-
+                  </div>
                 </section>
               </div>
 
@@ -187,113 +188,96 @@ function Content() {
           </div>
           <br />
           <h3>รายละเอียดส่วนตัว</h3>
-          <div class="row">
-            <div class="col-md-6">
+          <div className="container-22">
+            <div className="input-group1">
               <h4>ชื่อ - นามสกุล</h4>
-              <input type="text" class="form-control" id="names" name="names" />
+              <input type="text" id="names" name="names" />
             </div>
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>อายุ</h4>
-              <input type="text" class="form-control" id="age" name="age" />
+              <input type="text" id="age" name="age" />
             </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>วัน เดือน ปี เกิด</h4>
-              <input type="date" class="form-control" id="birthdate" name="birthdate" />
+              <input type="date" id="birthdate" name="birthdate" />
             </div>
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>สัญชาติ</h4>
-              <input type="text" class="form-control" id="nationality" name="nationality" />
+              <input type="text" id="nationality" name="nationality" />
             </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>เชื้อชาติ</h4>
-              <input type="text" class="form-control" id="ethnicity" name="ethnicity" />
+              <input type="text" id="ethnicity" name="ethnicity" />
             </div>
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>ศาสนา</h4>
-              <input type="text" class="form-control" id="religion" name="religion" />
+              <input type="text" id="religion" name="religion" />
             </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>เลขบัตรประชาชน</h4>
-              <input type="text" class="form-control" id="cardnumber" name="cardnumber" />
+              <input type="text" id="cardnumber" name="cardnumber" />
             </div>
-            <div class="col-md-6">
+            <div className="input-group1">
               <h4>ออกให้ ณ ที่ว่าการเขต</h4>
-              <input type="text" class="form-control" id="country" name="country" />
+              <input type="text" id="country" name="country" />
             </div>
           </div>
-          <br />
-          <h4>ที่อยู่ปัจจุบัน (ที่สามารถติดต่อได้)</h4>
-          <div className="checkbox-group">
-            <input
-              type="checkbox"
-              checked={checkboxes.checkbox7}
-              onChange={() => handleCheck("checkbox7")}
-              className="custom-checkbox"
-            />
-            <label>เป็นเจ้าของ</label>
-            <input
-              type="checkbox"
-              checked={checkboxes.checkbox8}
-              onChange={() => handleCheck("checkbox8")}
-              className="custom-checkbox"
-            />
-            <label>อยู่กับพ่อแม่</label>
-            <input
-              type="checkbox"
-              checked={checkboxes.checkbox9}
-              onChange={() => handleCheck("checkbox9")}
-              className="custom-checkbox"
-            />
-            <label>อยู่กับญาติ</label>
-            <input
-              type="checkbox"
-              checked={checkboxes.checkbox10}
-              onChange={() => handleCheck("checkbox10")}
-              className="custom-checkbox"
-            />
-            <label>บ้านเช่า</label>
-            <input
-              type="checkbox"
-              checked={checkboxes.checkbox11}
-              onChange={() => handleCheck("checkbox11")}
-              className="custom-checkbox"
-            />
-            <label>หอพัก</label>
-
+          <div className="input-group3">
+            <h4>ที่อยู่ (ตามบัตรประชาชน)</h4>
+            <textarea type="text" id="addresscard" name="addresscard" />
           </div>
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-group3">
+            <h4>ที่อยู่ปัจจุบัน (ที่สามารถติดต่อได้)</h4>
+            <div className="checkbox-group">
+              <input
+                type="checkbox"
+                checked={checkboxes.checkbox7}
+                onChange={() => handleCheck("checkbox7")}
+                className="custom-checkbox"
+              />
+              <label>เป็นเจ้าของ</label>
+              <input
+                type="checkbox"
+                checked={checkboxes.checkbox8}
+                onChange={() => handleCheck("checkbox8")}
+                className="custom-checkbox"
+              />
+              <label>อยู่กับพ่อแม่</label>
+              <input
+                type="checkbox"
+                checked={checkboxes.checkbox9}
+                onChange={() => handleCheck("checkbox9")}
+                className="custom-checkbox"
+              />
+              <label>อยู่กับญาติ</label>
+              <input
+                type="checkbox"
+                checked={checkboxes.checkbox10}
+                onChange={() => handleCheck("checkbox10")}
+                className="custom-checkbox"
+              />
+              <label>บ้านเช่า</label>
+              <input
+                type="checkbox"
+                checked={checkboxes.checkbox11}
+                onChange={() => handleCheck("checkbox11")}
+                className="custom-checkbox"
+              />
+              <label>หอพัก</label>
               <div className="input-group4">
-                <textarea type="text" id="etc" name="etc" class="form-control" />
+                <input type="text" id="etc" name="etc" class="form-control" />
               </div>
             </div>
           </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>โทรศัพท์มือถือ</h4>
-              <input type="text" class="form-control" id="phone" name="phone" />
-            </div>
-
+          <div className="input-group1">
+            <h4>โทรศัพท์มือถือ</h4>
+            <input type="text" id="phone" name="phone" />
           </div>
           <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>โทรศัพท์มือถือที่ติดต่อได้</h4>
-              <input type="text" class="form-control" id="contactPhone" name="contactPhone" />
-            </div>
-
+          <div className="input-group1">
+            <h4>โทรศัพท์มือถือที่ติดต่อได้</h4>
+            <input type="text" id="contactPhone" name="contactPhone" />
           </div>
-
         </div>
         <div className="button-container">
           <button type="button" className="add-button" onClick={handleNextPage}>

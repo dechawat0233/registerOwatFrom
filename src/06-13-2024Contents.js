@@ -257,42 +257,30 @@ function Contents() {
               <input type="text" id="bankBranch" name="bankBranch" class="form-control" />
             </div>
           </div>
-          <br />
         </div>
       </div>
       <div className="container-d">
         <div className="textcontainer-d">
           <h2>กรณีเกิดอุบัติเหตุหรือเรื่องฉุกเฉิน บุคคลที่สามารถติดต่อได้</h2>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <h4>ชื่อ - นามสกุล</h4>
-            <input type="text" class="form-control" id="emergencyName" name="emergencyName" />
-          </div>
+        <div className="single-input">
+          <h4>ชื่อ - นามสกุล</h4>
+          <input type="text" id="emergencyName" name="emergencyName" />
         </div>
-        <br />
-        <div class="row">
-          <div class="col-md-6">
+        <div className="input-groupa">
+          <div className="left-side">
             <h4>เบอร์โทรศัพท์ที่ติดต่อได้</h4>
-            <input type="text" id="parentContact" class="form-control" name="parentContact" />
-          </div>
-          <div class="col-md-6">
+            <input type="text" id="parentContact" name="parentContact" />
             <h4>เบอร์โทรศัพท์พี่/น้อง</h4>
-            <input type="text" id="Contact" class="form-control" name="Contact" />
+            <input type="text" id="Contact" name="Contact" />
           </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-6">
+          <div className="right-side">
             <h4>เบอร์โทรศัพท์พ่อ/แม่</h4>
-            <input type="text" id="emergencyContact" class="form-control" name="emergencyContact" />
-          </div>
-          <div class="col-md-6">
+            <input type="text" id="emergencyContact" name="emergencyContact" />
             <h4>เบอร์โทรศัพท์ญาติ</h4>
-            <input type="text" id="Contactt" class="form-control" name="Contactt" />
+            <input type="text" id="Contactt" name="Contactt" />
           </div>
         </div>
-
       </div>
       <div className="container-e">
         <div className="textcontainer-e">
@@ -358,21 +346,14 @@ function Contents() {
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-12">
+          <div className="right-side">
+            <div className="input-groupb">
               <h4>ใบอนุญาตขับขี่เลขที่</h4>
-              <input type="text" id="licenseNumber" class="form-control" name="licenseNumber" />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-12">
+              <input type="text" id="licenseNumber" name="licenseNumber" />
               <h4>วันหมดอายุ</h4>
-              <input type="date" id="expiryDate" class="form-control" name="expiryDate" />
+              <input type="date" id="expiryDate" name="expiryDate" />
             </div>
           </div>
-
         </div>
         <div className="textcontainer-nine">
           <h4>สามารถและพร้อมที่จะเดินทางไปปฎิบัติงานในสถานที่ต่างๆ ได้หรือไม่ เพราะเหตุผลใด</h4>
@@ -400,13 +381,8 @@ function Contents() {
             <label> อื่นๆ </label>
           </div>
         </div>
-        {/* <div className="input-groupc">
+        <div className="input-groupc">
           <input type="text" id="reason" name="reason" />
-        </div> */}
-        <div class="row">
-          <div class="col-md-12">
-            <input type="text" id="reason" class="form-control" name="reason" />
-          </div>
         </div>
       </div>
       <div className="container-f">

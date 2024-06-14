@@ -111,42 +111,43 @@ function Contentss() {
             <h2>ข้อมูลบิดา - มารดาผู้สมัคร</h2>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <h4>ชื่อบิดา - นามสกุล</h4>
-              <input type="text" id="fatherName" class="form-control" name="fatherName" value={formData.fatherName} onChange={handleFormDataChange} />
-            </div>
-            <div class="col-md-6">
-              <h4>อายุ/ปี</h4>
-              <input type="number" id="fatherAge" class="form-control" name="fatherAge" value={formData.fatherAge} onChange={handleFormDataChange} />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>อาชีพ</h4>
-              <input type="text" id="fatherJob" class="form-control" name="fatherJob" value={formData.fatherJob} onChange={handleFormDataChange} />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>ชื่อบิดา - นามสกุล</h4>
-              <input type="text" id="motherName" class="form-control " name="motherName" value={formData.motherName} onChange={handleFormDataChange} />
-            </div>
-            <div class="col-md-6">
-              <h4>อายุ/ปี</h4>
-              <input type="number" id="motherAge" class="form-control" name="motherAge" value={formData.motherAge} onChange={handleFormDataChange} />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>อาชีพ</h4>
-              <input type="text" id="motherJob" class="form-control" name="motherJob" value={formData.motherJob} onChange={handleFormDataChange} />
-            </div>
-          </div>
-          <br />
 
+            <div class="col-md-3">
+              <h4>ชื่อบิดา - นามสกุล</h4>
+              <input type="text" id="fatherName" class="form-control" name="fatherName" value={formData.fatherName} onChange={handleFormDataChange}  />
+            </div>
+          </div>
+          {/* <div className="input-row">
+            <div className="input-group1">
+              
+            </div>
+          </div> */}
+          <div className="input-row">
+            <div className="input-group">
+              <h4>อาชีพ</h4>
+              <input type="text" id="fatherJob" name="fatherJob" value={formData.fatherJob} onChange={handleFormDataChange} />
+            </div>
+            <div className="input-group">
+              <h4>อายุ/ปี</h4>
+              <input type="number" id="fatherAge" name="fatherAge" value={formData.fatherAge} onChange={handleFormDataChange} />
+            </div>
+          </div>
+          <div className="input-row">
+            <div className="input-group">
+              <h4>ชื่อมารดา - นามสกุล</h4>
+              <input type="text" id="motherName" name="motherName" value={formData.motherName} onChange={handleFormDataChange} className="long-input" />
+            </div>
+          </div>
+          <div className="input-row">
+            <div className="input-group">
+              <h4>อาชีพ</h4>
+              <input type="text" id="motherJob" name="motherJob" value={formData.motherJob} onChange={handleFormDataChange} />
+            </div>
+            <div className="input-group">
+              <h4>อายุ/ปี</h4>
+              <input type="number" id="motherAge" name="motherAge" value={formData.motherAge} onChange={handleFormDataChange} />
+            </div>
+          </div>
           <div className="textcontainer-two">
             <h2>สถานะครอบครัว</h2>
             <div className="checkbox-group">
@@ -199,40 +200,36 @@ function Contentss() {
               <label>แยกกันอยู่</label>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-row">
+            <div className="input-group">
               <h4>ชื่อ - นามสกุล คู่สมรส</h4>
-              <input type="text" id="spouseName" class="form-control" name="spouseName" value={formData.spouseName} onChange={handleFormDataChange} />
+              <input type="text" id="spouseName" name="spouseName" value={formData.spouseName} onChange={handleFormDataChange} />
             </div>
-            <div class="col-md-6">
+            <div className="input-group">
               <h4>สัญชาติ</h4>
-              <input type="text" id="spouseNationality" class="form-control" name="spouseNationality" value={formData.spouseNationality} onChange={handleFormDataChange} />
+              <input type="text" id="spouseNationality" name="spouseNationality" value={formData.spouseNationality} onChange={handleFormDataChange} />
             </div>
           </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-row">
+            <div className="input-group">
               <h4>อาชีพ</h4>
-              <input type="text" id="spouseJob" class="form-control" name="spouseJob" value={formData.spouseJob} onChange={handleFormDataChange} />
+              <input type="text" id="spouseJob" name="spouseJob" value={formData.spouseJob} onChange={handleFormDataChange} />
             </div>
-            <div class="col-md-6">
+            <div className="input-group">
               <h4>สถานที่ทำงาน</h4>
-              <input type="text" id="spouseWorkplace" class="form-control" name="spouseWorkplace" value={formData.spouseWorkplace} onChange={handleFormDataChange} />
+              <input type="text" id="spouseWorkplace" name="spouseWorkplace" value={formData.spouseWorkplace} onChange={handleFormDataChange} />
             </div>
           </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-row">
+            <div className="input-group">
               <h4>โทรศัพท์</h4>
-              <input type="text" id="spousePhone" class="form-control" name="spousePhone" value={formData.spousePhone} onChange={handleFormDataChange} />
+              <input type="text" id="spousePhone" name="spousePhone" value={formData.spousePhone} onChange={handleFormDataChange} />
             </div>
-            <div class="col-md-6">
+            <div className="input-group">
               <h4>โทรศัพท์มือถือ</h4>
-              <input type="text" id="spouseMobile" class="form-control" name="spouseMobile" value={formData.spouseMobile} onChange={handleFormDataChange} />
+              <input type="text" id="spouseMobile" name="spouseMobile" value={formData.spouseMobile} onChange={handleFormDataChange} />
             </div>
           </div>
-          <br />
-
           <div className="input-row">
             <div className="left-side2">
               <div className="h2">
@@ -279,43 +276,35 @@ function Contentss() {
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-row">
+            <div className="input-group">
               <h4>จำนวนบุตร/คน</h4>
-              <input type="number" id="numChildren" class="form-control" name="numChildren" value={formData.numChildren} onChange={handleFormDataChange} />
+              <input type="number" id="numChildren" name="numChildren" value={formData.numChildren} onChange={handleFormDataChange} />
             </div>
-            <div class="col-md-6">
+            <div className="input-group">
               <h4>จำนวนบุตรกำลังศึกษา/คน</h4>
-              <input type="number" id="numChildrenStudying" class="form-control" name="numChildrenStudying" value={formData.numChildrenStudying} onChange={handleFormDataChange} />
+              <input type="number" id="numChildrenStudying" name="numChildrenStudying" value={formData.numChildrenStudying} onChange={handleFormDataChange} />
             </div>
-
           </div>
-          <br />
-          <div class="row">
-            <div class="col-md-6">
+          <div className="input-row">
+            <div className="input-group">
               <h4>จำนวนบุตรอายุตํ่ากว่า 6 ปี/คน</h4>
+              <br />
+              <br />
+              <input type="number" id="numChildrenUnder6" name="numChildrenUnder6" value={formData.numChildrenUnder6} onChange={handleFormDataChange} />
             </div>
-            <div class="col-md-6">
+            <div className="input-group">
               <h4>วันเดือนปีเกิดของบุตรที่อายุต่ำกว่า</h4>
               <h4>6 ปี/คน</h4>
+              <br />
+              <div className="birthdate-input">
+                <input type="date" id="birthdateChildrenUnder6" name="birthdateChildrenUnder6" value={formData.birthdateChildrenUnder6} onChange={handleFormDataChange} />
+                <button type="button" className="add-button" onClick={handleAddPerson}>
+                  เพิ่ม
+                </button>
+              </div>
             </div>
-
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="numChildrenUnder6" name="numChildrenUnder6" value={formData.numChildrenUnder6} onChange={handleFormDataChange} />
-            </div>
-            <div class="col-md-4">
-              <input type="date" class="form-control" id="birthdateChildrenUnder6" name="birthdateChildrenUnder6" value={formData.birthdateChildrenUnder6} onChange={handleFormDataChange} />
-
-            </div>
-            <div class="col-md-2">
-              <button type="button" className="add-button" onClick={handleAddPerson}> เพิ่ม
-              </button>
-            </div>
-
-          </div>
-          <br />
           <div className="container-one-table">
             <table>
               <thead>

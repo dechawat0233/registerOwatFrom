@@ -4,6 +4,8 @@ import Contents from './Contents';
 import Contentss from './Contentss';
 import Content from './Content';
 import Layout from './Layout';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <Routes>
