@@ -268,11 +268,11 @@ function Contents({ formData, setFormData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email || formData.email.trim() === "") {
-      console.error("Email is required");
-      return;
-    }
-    
+    // if (!formData.email || formData.email.trim() === "") {
+    //   console.error("Email is required");
+    //   return;
+    // }
+
     const formDataToSubmit = new FormData();
 
     for (const key in formData) {
@@ -281,8 +281,12 @@ function Contents({ formData, setFormData }) {
         formDataToSubmit.append(key, formData[key]);
       } else if (key === "documents") {
         // Append each document file
+        // formData[key].forEach((document, index) => {
+        //   formDataToSubmit.append(`documents[${index}]`, document.file);
+        // });
+        /////
         formData[key].forEach((document, index) => {
-          formDataToSubmit.append(`documents[${index}]`, document.file);
+          formDataToSubmit.append("documents", document.file);
         });
       } else if (Array.isArray(formData[key])) {
         // Convert arrays to JSON strings

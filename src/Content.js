@@ -201,15 +201,14 @@ function Content({ formData, setFormData }) {
                         class="form-control"
                       />
 
-<input
+                      {/* <input
                         type="text"
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         class="form-control"
-                      />
-                      
+                      /> */}
                     </div>
                   </div>
                   <br />
