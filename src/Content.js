@@ -35,6 +35,17 @@ function Content({ formData, setFormData }) {
     setFormData((prevData) => ({ ...prevData, address: [e.target.value] }));
   };
 
+  // const handleRadioSocial_SecurityChange = (e) => {
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     social_security: [e.target.value],
+  //   }));
+  // };
+
+  const handleRadioSocial_SecurityChange = (e) => {
+    setFormData({ ...formData, social_security: e.target.value });
+  };
+
   // const [formData, setFormData] = useState({
   //   name: "",
   //   agency: "",
@@ -78,11 +89,35 @@ function Content({ formData, setFormData }) {
     setImageURL(URL.createObjectURL(file));
   };
 
+  // const handleChange = (e) => {
+  //   // const { name, value } = e.target;
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
+  //   // setFormData((prevState) => ({ ...prevState, [name]: value }));
+  // };
+
   const handleChange = (e) => {
-    // const { name, value } = e.target;
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-    // setFormData((prevState) => ({ ...prevState, [name]: value }));
+    const keys = name.split('.');
+
+    if (keys.length > 1) {
+      setFormData((prevData) => {
+        let updatedData = { ...prevData };
+        let nestedField = updatedData;
+
+        keys.forEach((key, index) => {
+          if (index === keys.length - 1) {
+            nestedField[key] = value;
+          } else {
+            nestedField = nestedField[key];
+          }
+        });
+
+        return updatedData;
+      });
+    } else {
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
   // const handleSubmit = async (e) => {
@@ -267,7 +302,7 @@ function Content({ formData, setFormData }) {
                   <img
                     src={imageURL}
                     alt="Selected"
-                    style={{ maxWidth: "100%", height: "auto" }}
+                    style={{ width: "250px", height: "300px" }}
                   />
                 )}
                 <input type="file" onChange={handleImageUpload} />
@@ -323,6 +358,59 @@ function Content({ formData, setFormData }) {
         <div className="container-2">
           <div className="textcontainer-2">
             <h2>บัตรประกันสังคม</h2>
+            <div className="checkbox-group">
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="social_security"
+                    value="notSocial_Security"
+                    checked={formData.social_security.includes(
+                      "notSocial_Security"
+                    )}
+                    onChange={handleRadioSocial_SecurityChange}
+                    className="custom-radio"
+                  />
+                  ไม่มี
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="social_security"
+                    value="haveSocial_Security"
+                    checked={formData.social_security.includes(
+                      "haveSocial_Security"
+                    )}
+                    onChange={handleRadioSocial_SecurityChange}
+                    className="custom-radio"
+                  />
+                  มี
+                </label>
+              </div>
+
+              {formData.social_security === "haveSocial_Security" && (
+                <div>
+                  <label>
+                    ระบุโรงพยาบาล:
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="social_security_number"
+                      value={formData.social_security_number || ""}
+                      // onChange={(e) =>
+                      //   setFormData({
+                      //     ...formData,
+                      //     social_security_number: e.target.value,
+                      //   })
+                      // }
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
           </div>
           <br />
           <h3>รายละเอียดส่วนตัว</h3>
@@ -421,6 +509,117 @@ function Content({ formData, setFormData }) {
                 id="country"
                 name="country"
                 value={formData.country}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <br />
+          <h4>สถานที่เกิด</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div className="input-group4">
+                <textarea
+                  type="text"
+                  id="place_of_birth"
+                  name="place_of_birth"
+                  class="form-control"
+                  value={formData.place_of_birth}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          </div>
+          <br />
+          <h4>ที่อยู่ (ตามบัตรชาชน)</h4>
+          <div class="row">
+            <div class="col-md-3">
+              <h4>เลขที่</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressNumber"
+                name="addressForNumberID.addressNumber"
+                class="form-control"
+                value={formData.addressForNumberID.addressNumber}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>หมู่ที่</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressVillage"
+                name="addressForNumberID.addressVillage"
+                class="form-control"
+                value={formData.addressForNumberID.addressVillage}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>ตรอกซอย</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressAlley"
+                name="addressForNumberID.addressAlley"
+                class="form-control"
+                value={formData.addressForNumberID.addressAlley}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>ถนน</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressRoad"
+                name="addressForNumberID.addressRoad"
+                class="form-control"
+                value={formData.addressForNumberID.addressRoad}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-3">
+              <h4>ตำบล/แขวง</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressSubdistrict"
+                name="addressForNumberID.addressSubdistrict"
+                class="form-control"
+                value={formData.addressForNumberID.addressSubdistrict}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>อำเภอ/เขต</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressDistrict"
+                name="addressForNumberID.addressDistrict"
+                class="form-control"
+                value={formData.addressForNumberID.addressDistrict}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>จังหวัด</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressProvince"
+                name="addressForNumberID.addressProvince"
+                class="form-control"
+                value={formData.addressForNumberID.addressProvince}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-3">
+              <h4>รหัสไปรษณีย์</h4>
+              <input
+                type="text"
+                id="addressForNumberID.addressPostalNumber"
+                name="addressForNumberID.addressPostalNumber"
+                class="form-control"
+                value={formData.addressForNumberID.addressPostalNumber}
                 onChange={handleChange}
               />
             </div>
@@ -531,7 +730,7 @@ function Content({ formData, setFormData }) {
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            {/* <div class="col-md-6">
               <div className="input-group4">
                 <textarea
                   type="text"
@@ -542,36 +741,142 @@ function Content({ formData, setFormData }) {
                   onChange={handleChange}
                 />
               </div>
+            </div> */}
+
+            <div class="row">
+              <div class="col-md-3">
+                <h4>เลขที่</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactNumber"
+                  name="addressForContact.addressContactNumber"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactNumber}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>หมู่ที่</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactVillage"
+                  name="addressForContact.addressContactVillage"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactVillage}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>ตรอกซอย</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactAlley"
+                  name="addressForContact.addressContactAlley"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactAlley}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>ถนน</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactRoad"
+                  name="addressForContact.addressContactRoad"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactRoad}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
+            <br />
+            <div class="row">
+              <div class="col-md-3">
+                <h4>ตำบล/แขวง</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactSubdistrict"
+                  name="addressForContact.addressContactSubdistrict"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactSubdistrict}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>อำเภอ/เขต</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactDistrict"
+                  name="addressForContact.addressContactDistrict"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactDistrict}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>จังหวัด</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactProvince"
+                  name="addressForContact.addressContactProvince"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactProvince}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>รหัสไปรษณีย์</h4>
+                <input
+                  type="text"
+                  id="addressForContact.addressContactPostalNumber"
+                  name="addressForContact.addressContactPostalNumber"
+                  class="form-control"
+                  value={formData.addressForContact.addressContactPostalNumber}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-3">
+                <h4>โทรศัพท์บ้านพัก</h4>
+                <input
+                  type="text"
+                  id="addressForContact.HomePhone"
+                  name="addressForContact.HomePhone"
+                  class="form-control"
+                  value={formData.addressForContact.HomePhone}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>โทรศัพท์มือถือ</h4>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phones"
+                  name="phones"
+                  value={formData.phones}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="col-md-3">
+                <h4>โทรศัพท์มือถือที่ติดต่อได้</h4>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactPhone"
+                  name="contactPhone"
+                  value={formData.contactPhone}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <br />
           </div>
           <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>โทรศัพท์มือถือ</h4>
-              <input
-                type="text"
-                class="form-control"
-                id="phones"
-                name="phones"
-                value={formData.phones}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
           <br />
-          <div class="row">
-            <div class="col-md-6">
-              <h4>โทรศัพท์มือถือที่ติดต่อได้</h4>
-              <input
-                type="text"
-                class="form-control"
-                id="contactPhone"
-                name="contactPhone"
-                value={formData.contactPhone}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
+          <div class="row"></div>
         </div>
         <div className="button-container">
           <button onClick={handleDeleteAllUsers}>Delete All Users</button>

@@ -265,53 +265,90 @@ function Contents({ formData, setFormData }) {
   //   }
   // };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   // if (!formData.email || formData.email.trim() === "") {
+  //   //   console.error("Email is required");
+  //   //   return;
+  //   // }
+
+  //   const formDataToSubmit = new FormData();
+
+  //   for (const key in formData) {
+  //     if (key === "image") {
+  //       // Append the image file
+  //       formDataToSubmit.append(key, formData[key]);
+  //     } else if (key === "documents") {
+  //       // Append each document file
+  //       // formData[key].forEach((document, index) => {
+  //       //   formDataToSubmit.append(`documents[${index}]`, document.file);
+  //       // });
+  //       /////
+  //       formData[key].forEach((document, index) => {
+  //         formDataToSubmit.append("documents", document.file);
+  //       });
+  //     } else if (Array.isArray(formData[key])) {
+  //       // Convert arrays to JSON strings
+  //       formDataToSubmit.append(key, JSON.stringify(formData[key]));
+  //     } else {
+  //       formDataToSubmit.append(key, formData[key]);
+  //     }
+  //     console.log(key + " : " + formData[key]);
+  //   }
+
+  //   try {
+  //     const response = await fetch("http://localhost:3000/users", {
+  //       method: "POST",
+  //       body: formDataToSubmit,
+  //     });
+
+  //     if (response.ok) {
+  //       console.log("User created successfully");
+  //       navigate("/");
+  //     } else {
+  //       const errorData = await response.json();
+  //       console.error("Failed to create user:", errorData.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // if (!formData.email || formData.email.trim() === "") {
-    //   console.error("Email is required");
-    //   return;
-    // }
-
+  
     const formDataToSubmit = new FormData();
-
+  
     for (const key in formData) {
-      if (key === "image") {
-        // Append the image file
+      if (key === 'image') {
         formDataToSubmit.append(key, formData[key]);
-      } else if (key === "documents") {
-        // Append each document file
-        // formData[key].forEach((document, index) => {
-        //   formDataToSubmit.append(`documents[${index}]`, document.file);
-        // });
-        /////
-        formData[key].forEach((document, index) => {
-          formDataToSubmit.append("documents", document.file);
+      } else if (key === 'documents') {
+        formData[key].forEach((document) => {
+          formDataToSubmit.append('documents', document.file);
         });
-      } else if (Array.isArray(formData[key])) {
-        // Convert arrays to JSON strings
+      } else if (typeof formData[key] === 'object') {
         formDataToSubmit.append(key, JSON.stringify(formData[key]));
       } else {
         formDataToSubmit.append(key, formData[key]);
       }
-      console.log(key + " : " + formData[key]);
     }
-
+  
     try {
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
+      const response = await fetch('http://localhost:3000/users', {
+        method: 'POST',
         body: formDataToSubmit,
       });
-
+  
       if (response.ok) {
-        console.log("User created successfully");
-        navigate("/");
+        console.log('User created successfully');
+        navigate('/');
       } else {
         const errorData = await response.json();
-        console.error("Failed to create user:", errorData.message);
+        console.error('Failed to create user:', errorData.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
 
@@ -396,7 +433,7 @@ function Contents({ formData, setFormData }) {
             <table>
               <thead>
                 <tr>
-                  <th className="duration-column">ระยะเวลาทำงาน</th>
+                  <th className="duration-column">ระยะเวลาทำงาน (ปี)</th>
                   <th className="workplace-column">
                     ชื่อสถานที่ทำงานและที่อยู่
                   </th>
@@ -645,7 +682,7 @@ function Contents({ formData, setFormData }) {
                 </div>
               </div>
               <div className="textcontainer-seven">
-                <h4>ขับขี่จักรยานยนต์</h4>
+                <h4>ขับขี่รถยนต์</h4>
                 <div className="checkbox-group">
                   <input
                     type="radio"

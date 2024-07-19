@@ -10,16 +10,19 @@ import UserForm from "./UserForm";
 import UserForm2 from "./UserForm2";
 
 function App() {
-
   const [formData, setFormData] = useState({
+    recordTime: new Date().toISOString(),
     name: "",
     email: "",
+    status: "waiting",
     choose: [],
     agency: "",
     phone: "",
     idNumber: "",
     image: null,
     startDate: "",
+    social_security: "",
+    social_security_number: "",
     position: "",
     agency2: "",
     names: "",
@@ -30,8 +33,32 @@ function App() {
     religion: "",
     cardnumber: "",
     country: "",
+    place_of_birth: "",
+
+    addressForNumberID: {
+      addressNumber: "",
+      addressVillage: "",
+      addressAlley: "",
+      addressRoad: "",
+      addressSubdistrict: "",
+      addressDistrict: "",
+      addressProvince: "",
+      addressPostalNumber: "",
+    },
+
+    addressForContact: {
+      addressContactNumber: "",
+      addressContactVillage: "",
+      addressContactAlley: "",
+      addressContactRoad: "",
+      addressContactSubdistrict: "",
+      addressContactDistrict: "",
+      addressContactProvince: "",
+      addressContactPostalNumber: "",
+    },
     address: "",
     etc: "",
+    HomePhone: "",
     phones: "",
     contactPhone: "",
 
