@@ -35,12 +35,6 @@ function Contents({ formData, setFormData }) {
       duration: "",
     },
     {
-      degree: "มัธยมศึกษาปีที่ 1-3/ ปสช.",
-      institution: "",
-      location: "",
-      duration: "",
-    },
-    {
       degree: "มัธยมศึกษาปีที่ 4-6/ ปวส.",
       institution: "",
       location: "",
@@ -53,6 +47,8 @@ function Contents({ formData, setFormData }) {
   const [workHistory, setWorkHistory] = useState([
     {
       duration: "",
+      durationStart: "",
+      durationEnd: "",
       workplace: "",
       position: "",
       lastSalary: "",
@@ -60,6 +56,8 @@ function Contents({ formData, setFormData }) {
     },
     {
       duration: "",
+      durationStart: "",
+      durationEnd: "",
       workplace: "",
       position: "",
       lastSalary: "",
@@ -67,6 +65,8 @@ function Contents({ formData, setFormData }) {
     },
     {
       duration: "",
+      durationStart: "",
+      durationEnd: "",
       workplace: "",
       position: "",
       lastSalary: "",
@@ -317,38 +317,38 @@ function Contents({ formData, setFormData }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const formDataToSubmit = new FormData();
-  
+
     for (const key in formData) {
-      if (key === 'image') {
+      if (key === "image") {
         formDataToSubmit.append(key, formData[key]);
-      } else if (key === 'documents') {
+      } else if (key === "documents") {
         formData[key].forEach((document) => {
-          formDataToSubmit.append('documents', document.file);
+          formDataToSubmit.append("documents", document.file);
         });
-      } else if (typeof formData[key] === 'object') {
+      } else if (typeof formData[key] === "object") {
         formDataToSubmit.append(key, JSON.stringify(formData[key]));
       } else {
         formDataToSubmit.append(key, formData[key]);
       }
     }
-  
+
     try {
-      const response = await fetch('http://localhost:3000/users', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
         body: formDataToSubmit,
       });
-  
+
       if (response.ok) {
-        console.log('User created successfully');
-        navigate('/');
+        console.log("User created successfully");
+        navigate("/");
       } else {
         const errorData = await response.json();
-        console.error('Failed to create user:', errorData.message);
+        console.error("Failed to create user:", errorData.message);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -434,6 +434,8 @@ function Contents({ formData, setFormData }) {
               <thead>
                 <tr>
                   <th className="duration-column">ระยะเวลาทำงาน (ปี)</th>
+                  <th className="duration-column">จากพ.ศ.</th>
+                  <th className="duration-column">ถึงพ.ศ.</th>
                   <th className="workplace-column">
                     ชื่อสถานที่ทำงานและที่อยู่
                   </th>
@@ -448,6 +450,35 @@ function Contents({ formData, setFormData }) {
                 {workHistory.map((item, index) => (
                   <tr key={index}>
                     <td className="duration-column">
+                      <input
+                        type="text"
+                        value={item.durationStart}
+                        onChange={(e) =>
+                          handleWorkHistoryChange(
+                            index,
+                            "duration",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </td>
+                    <td className="duration-column">
+                      {" "}
+                      <input
+                        type="text"
+                        value={item.durationEnd}
+                        onChange={(e) =>
+                          handleWorkHistoryChange(
+                            index,
+                            "duration",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </td>
+
+                    <td className="duration-column">
+                      {" "}
                       <input
                         type="text"
                         value={item.duration}
@@ -584,7 +615,7 @@ function Contents({ formData, setFormData }) {
             <h2>กรณีเกิดอุบัติเหตุหรือเรื่องฉุกเฉิน บุคคลที่สามารถติดต่อได้</h2>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <h4>ชื่อ - นามสกุล</h4>
               <input
                 type="text"
@@ -592,6 +623,17 @@ function Contents({ formData, setFormData }) {
                 id="emergencyName"
                 name="emergencyName"
                 value={formData.emergencyName}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="col-md-6">
+              <h4>เกี่ยวข้อง</h4>
+              <input
+                type="text"
+                class="form-control"
+                id="relevant"
+                name="relevant"
+                value={formData.relevant}
                 onChange={handleChange}
               />
             </div>

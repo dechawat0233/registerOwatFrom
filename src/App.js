@@ -91,6 +91,7 @@ function App() {
     bankname: "",
     bankBranch: "",
     emergencyName: "",
+    relevant: "",
     parentContact: "",
     Contact: "",
     emergencyContact: "",
