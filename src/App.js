@@ -9,12 +9,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import UserForm from "./UserForm";
 import UserForm2 from "./UserForm2";
 
-function App() {
+function App({userId}) {
   const [formData, setFormData] = useState({
-    recordTime: new Date().toISOString(),
+    // recordTime: new Date().toISOString(),
+    recordTime: userId ? undefined : new Date().toISOString(), // Only set for new users
     name: "",
     email: "",
-    status: "waiting",
+    status: "สมัครใหม่",
     choose: [],
     agency: "",
     phone: "",
